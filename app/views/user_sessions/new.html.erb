@@ -1,0 +1,22 @@
+<div class="section">
+	<div class="container">
+    	<div class="row justify-content-center">
+	      	<div class="col-4">
+	      		<h2 class="title is-2">Log in</h2>
+				
+				<%= form_with(url: user_sessions_path, method: :post, local: true) do |form| %>
+					<div class="field">
+						<%= form.text_field :email, class: "form-control", autofocus: true, placeholder: "Email", required: true %><br />
+					</div>
+					<div class="field">
+						<%= form.password_field :password, class: "form-control", placeholder: "Password", required: true %><br />
+					</div>
+					<div class="actions">
+						<%= form.submit "Login", class: "btn btn-lg btn-primary btn-block" %><br /><br />
+					</div>
+				<% end %>
+				<p class="mt-5 mb-3 text-muted text-center"><%= link_to 'Back', root_path %></p>
+			</div>
+		</div>
+	</div>
+</div>

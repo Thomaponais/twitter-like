@@ -1,0 +1,61 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+  <% end %>
+
+  <div class="section pt-3">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <div class="media">
+            <% if user.avatar.attached? %>
+              <p class="image align-self-center mr-3">
+              <%= image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed %>
+              </p>
+            <% end %>
+            <div class="media-body">
+             <h2 class="mt-0"><%= user.username %></h2>
+            </div>
+          </div>
+          <div class="field">
+              <%= form.label :username %><br />
+              <%= form.text_field :username, autofocus: true, class: "form-control", required: true %>
+          </div>
+
+          <div class="field">
+              <%= form.label :email %><br />
+              <%= form.text_field :email, class: "form-control",required: true %>
+          </div>
+
+          <div class="field">
+              <%= form.label :password %><br />
+              <%= form.password_field :password, class: "form-control" %>
+          </div>
+
+          <div class="field">
+              <%= form.label :password_confirmation %><br />
+              <%= form.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+          <div class="field">
+              <%= form.label :avatar %><br />
+              <%= form.file_field :avatar, class: "form-control" %> <br />
+          </div>
+               <br />
+
+          <div class="field">
+              <%= form.submit "Edit profile", class: "btn btn-lg btn-primary btn-block" %><br />
+          </div>
+        </div><% end %>
+      </div>
+    </div>
+  </div>
