@@ -23,10 +23,14 @@ i18nでの日本語化　： ビューに文書ではなく、config/locales/ja.
 これから直さなければならないところ：
   
 ・日本語になっていないフラッシュメッセージを日本語に直すこと（ログイン）
+
 ・デザインの足りないところ：電話のスクリーンの幅を全部綺麗に使うことなど
+
 ・ユーザーネームやパスワードの条件をあげること（パスワードが簡単すぎるのを禁止することなど）
+
 ・ユーザーページに投稿の順番は古い投稿からの順番になっています。
-  controllers/user_controllerの１４行 を　@user_tweets を　@user.tweets.page(params[:page]).per(25) じゃな　@user.order(created_at: :desc).page(params[:page]).per(25)に直します。
+
+controllers/user_controllerの１４行 を　@user_tweets を　@user.tweets.page(params[:page]).per(25) じゃな　@user.order(created_at: :desc).page(params[:page]).per(25)に直します。
   
 これから追加したい機能：  
   ・フォロー、いいね、コメント、ハッシュタグ機能
