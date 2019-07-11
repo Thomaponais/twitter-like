@@ -33,7 +33,7 @@ i18nでの日本語化　： ビューに文書ではなく、config/locales/ja.
 
 ・ユーザーページに投稿の順番は古い投稿からの順番になっています。
 
-controllers/user_controllerの１４行 を　@user_tweets を　@user.tweets.page(params[:page]).per(25) じゃな　@user.order(created_at: :desc).page(params[:page]).per(25)に直します。
+controllers/user_controllerの１４行 を　@user_tweets を　@user.tweets.page(params[:page]).per(25) じゃなくて　@user.tweets.order(created_at: :desc).page(params[:page]).per(25)に直します。
   
 これから追加したい機能：  
   ・フォロー、いいね、コメント、ハッシュタグ機能
