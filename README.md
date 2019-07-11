@@ -1,24 +1,36 @@
-# README
+目的：Twitterライクなアプリケーション
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・新規登録／ログインに機能を作成する：ユーザーネーム、メールアドレスとパスワードで登録、ログインをする
 
-Things you may want to cover:
+・140字以内の短文を投稿機能：
+  自分の投稿を編集、削除ができる機能
+  他人のユーザの投稿の編集や削除を禁止にする
+  投稿を新しい投稿順で並べる
+  
+  
+  ---------------------------------------------------------------------------------------
 
-* Ruby version
+追加した機能：
 
-* System dependencies
+プロフィール写真　       :　      登録の時に、デフォルトのプロフィール写真を設定することにしました。
+                              ユーザーの情報変更メニューにプロフィール写真を追加する機能を入れました。
+                  
+レスポンシブウェブデザイン :       モバイルでもパソコンでもある程度うまく使えるように、Bootstrapでページをフィットしました。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+i18nでの日本語化　　　　　：      ビューに文書ではなく、config/locales/ja.ymlにあるキーワードを書きました。それで、英語版などを簡単に作れると
+                              思います。
+                  
+  ---------------------------------------------------------------------------------------
+  
+これから直さなければならないところ：
+  
+  ・日本語になっていないフラッシュメッセージを日本語に直すこと（ログイン）
+  ・デザインの足りないところ：電話のスクリーンの幅を全部綺麗に使うことなど
+  ・ユーザーネームやパスワードの条件をあげること（パスワードが簡単すぎるのを禁止することなど）
+  ・ユーザーページに投稿の順番は古い投稿からの順番になっています（）
+      controllers/user_controllerの１４行 @user_tweets を　@user.tweets.page(params[:page]).per(25) じゃなくて
+                                                         @user.order(created_at: :desc).page(params[:page]).per(25)
+                                                         に直します。
+  
+これから追加したい機能：  
+  ・フォロー、いいね、コメント、ハッシュタグ機能
