@@ -3,7 +3,7 @@
   <head>
     <title>Twitter</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -20,22 +20,24 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <%= link_to 'Home', root_path, class:"nav-link" %>
+            <%= link_to t('.home'), root_path, class:"nav-link" %>
           </li>
+          <% if logged_in? %>
+            <li class="nav-item active">
+              <%= link_to t('.my_page'), current_user, class:"nav-link" %>
+            </li>
+          <% end %>
           <li class="nav-item active">
-            <%= link_to 'My page', root_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to 'Users', root_path, class:"nav-link" %>
+            <%= link_to t('.users'), :users, class:"nav-link" %>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <% if current_user %>
-            <%= link_to "Edit Profile", edit_user_path(current_user.id), class:"btn btn-success mr-3" %>
-            <%= link_to "Logout", logout_path, method: :delete, class:"btn btn-success" %>
+          <% if logged_in? %>
+            <%= link_to t('.edit_profile'), edit_user_path(current_user.id), class:"btn btn-success mr-3" %>
+            <%= link_to t('.logout'), logout_path, method: :delete, class:"btn btn-success" %>
           <% else %>
-            <%= link_to "Register", new_user_path, class:"btn btn-success" %>
-            <%= link_to "Login", :login, class:"btn btn-success " %>
+            <%= link_to t('.register'), new_user_path, class:"btn btn-success  mr-3" %>
+            <%= link_to t('.login'), :login, class:"btn btn-success " %>
           <% end %>
         </form>
       </div>

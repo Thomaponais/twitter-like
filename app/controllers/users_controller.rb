@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @user_tweets = @user.tweets.page(params[:page]).per(25)
+
   end
 
   # GET /users/new
@@ -31,7 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         auto_login(@user)
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to root_path, notice: 'ユーザー登録が完了しました。' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'ユーザー情報の変更が完了しました。' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -60,7 +62,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'ユーザーの削除が完了しました。' }
       format.json { head :no_content }
     end
   end

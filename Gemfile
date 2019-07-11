@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap_form'
+gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -54,6 +56,7 @@ group :development do
   gem 'guard', '~> 2.15'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
   gem 'image_processing', '~> 1.2'
+  gem 'kaminari'
 end
 
 group :test do

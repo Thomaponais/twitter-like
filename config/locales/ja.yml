@@ -1,0 +1,56 @@
+ja:
+  layouts:
+    application:
+      home: "ホームページ"
+      my_page: 'マイページ'
+      users: "ユーザー"
+      register: "登録"
+      login: "ログイン"
+      edit_profile: "情報変更"
+      logout: "ログアウト"
+  tweets:
+    feed:
+      confirm_delete: "このツイートを削除しますか。"
+    form:
+      write_your_tweet: "気分を伝えましょう！"
+      create_tweet: "投稿！"
+  user_sessions:
+    new:
+      login_title: "ログイン"
+      email: "メールアドレス"
+      password: "パスワード"
+      submit_login: "ログイン！"
+  users:
+    editprofile:
+      username: "ユーザーネーム"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
+      avatar: "プロフィール写真"
+      edit_profile_submit: "変更"
+    form:
+      register_title: "登録"
+      username: "ユーザーネーム"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
+      sign_up_submit: "変更"
+    index:
+      user_title: "ユーザー"
+    show:
+      confirm_delete: "このツイートを削除しますか。"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              taken: ":このユーザーネームは既に登録されています"
+            email:
+              taken: ":このメールアドレスは既に登録されています"
+            password:
+              too_short: ":６文字以上のパスワードを入力してください"
+            password_confirmation:
+              confirmation: ":パスワードとパスワードの確認は同じではありません"
+

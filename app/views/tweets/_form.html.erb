@@ -1,21 +1,29 @@
-<%= form_with(model: tweet, local: true) do |form| %>
-  <% if tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-      <% tweet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <div class="control">
-      <%= form.label :tweet %></br>
-      <%= form.text_area :tweet, maxlength: "140", wrapper: false, class: "form-control", rows:"2", required: true, placeholder: "Write your tweet!!" %>
+<div class="row justify-content-center mt-2"> 
+  <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+    <div class="media justify-content-center">
+      <div class="media align-self-start mr-3">
+        <p class="image">
+          <%= image_tag current_user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed %>
+        </p>
+      </div>
+      <div class="form-group col">
+        <%= form_with(model: tweet, local: true) do |form| %>
+          <% if tweet.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% tweet.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="field mb-1">
+            <%= form.label :tweet %>
+            <%= form.text_area :tweet, maxlength: "140", wrapper: false, class: "form-control", rows:"2", required: true, placeholder: t('.write_your_tweet') %>
+          </div>
+          <%= form.submit t('.create_tweet') %>
+        <% end %>
+      </div>
     </div>
   </div>
-    <%= form.submit %>
-<% end %>
+</div>

@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = Tweet.all.order(created_at: :desc).page(params[:page]).per(25)
     @tweet = Tweet.new
   end
 
@@ -29,7 +29,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to root_path, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to root_path, notice: 'ツーイトの投稿が完了しました。' }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class TweetsController < ApplicationController
   def update
     respond_to do |format|
       if @tweet.update(tweet_params)
-        format.html { redirect_to root_path, notice: 'Tweet was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'ツーイトの編集が完了しました。' }
         format.json { render :show, status: :ok, location: @tweet }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class TweetsController < ApplicationController
   def destroy
     @tweet.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Tweet was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'ツーイトの削除が完了しました。' }
       format.json { head :no_content }
     end
   end
