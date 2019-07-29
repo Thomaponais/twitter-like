@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @user_tweets = @user.tweets.page(params[:page]).per(25)
+    @user_tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(25)
 
   end
 
