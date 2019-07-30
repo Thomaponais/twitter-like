@@ -1,0 +1,18 @@
+.container-fluid.mt-2
+  .row.d-flex.justify-content-center
+    .col-12.col-sm-11.col-md-10.col-lg-9.col-xl-8
+      .page-header.text-center.mt-2
+        h2= t('.user_title')
+        br/
+      ul.list-group
+        - @users.each do |user|
+          li.list-group-item
+            = link_to(user) do
+              .media
+                .image.mr-3
+                  = image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed
+                .media-body.align-self-center
+                  h4= user.username
+        .pagination.justify-content-end
+          = paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+
