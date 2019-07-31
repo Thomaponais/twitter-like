@@ -58,6 +58,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
   gem 'image_processing', '~> 1.2'
   gem 'kaminari'
+  gem 'acts_as_votable', '~> 0.12.1'
 end
 
 group :test do

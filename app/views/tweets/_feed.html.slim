@@ -20,6 +20,26 @@
                   = link_to tweet, method: :delete, data: { confirm: t('.confirm_delete') } do
                     span.icon
                       i.fa.fa-trash-o aria-hidden="true" 
+                span.level-item.likes.data
+                  span.votes
+                    - if logged_in?
+                      - if current_user.liked? tweet
+                        = link_to unlike_tweet_path(tweet), method: :put, class: 'unlike_tweet' do
+                          span.icon
+                            i.fa.fa-heart.has-text-primary
+                          span.count
+                            = tweet.get_likes.size
+                      - else
+                        = link_to like_tweet_path(tweet), method: :put, class: 'like_tweet' do
+                          span.icon
+                            i.fa.fa-heart-o
+                          span.count
+                            = tweet.get_likes.size
+                    - else
+                      = link_to like_tweet_path(tweet), method: :put, class: 'like_tweet' do
+                        span.icon
+                          i.fa.fa-heart-o
+                        span.count
+                          = tweet.get_likes.size                      
         .pagination.justify-content-end
           = paginate @tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
-
