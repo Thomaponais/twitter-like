@@ -1,0 +1,16 @@
+h2.title.text-center.mt-2= t('.login_title')
+br/
+.container
+  .row.justify-content-center
+    .col-12.col-sm-10.col-md-8.col-lg-6.col-xl-4
+      = form_with(url: user_sessions_path, method: :post, local: true) do |form|
+        .field
+          = form.text_field :email, class: "form-control", autofocus: true, placeholder: t('.email'), required: true
+          br/
+        .field
+          = form.password_field :password, class: "form-control", placeholder: t('.password'), required: true
+          br/
+        .actions
+          = form.submit t('.submit_login'), class: "btn btn-lg btn-primary btn-block"
+          br/
+          br/
