@@ -1,10 +1,8 @@
 .container-fluid
-  - if logged_in?
-    = render 'form', tweet: @tweet
   .row.d-flex.justify-content-center.mb-2
     .col-12.col-sm-10.col-md-8.col-lg-7
       ul.list-group.mt-2
-        - @tweets.each do |tweet|
+        - tweets.each do |tweet|
           li.list-group-item
             .media
               .media.align-self-start.mr-3
@@ -22,6 +20,6 @@
                       i.fa.fa-trash-o aria-hidden="true" 
                 span.level-item.likes.data
                   span id="like-of-#{tweet.id}"
-                    = render partial: 'like', locals: { tweet: tweet, likes: @likes }                   
+                    = render partial: 'tweets/like', locals: { tweet: tweet }                   
         .pagination.justify-content-end
-          = paginate @tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+          = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
