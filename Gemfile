@@ -37,6 +37,7 @@ gem 'bootstrap_form'
 gem 'bootstrap4-kaminari-views'
 gem 'jquery-rails'
 gem 'slim-rails', '~> 3.2'
+gem "font-awesome-rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

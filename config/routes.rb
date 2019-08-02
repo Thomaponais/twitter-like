@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 	resources :tweets do
   		member do
-    		put 'like', to: "tweets#like"
-    		put 'unlike', to: "tweets#unlike"
+    		get 'like'
+    		get 'unlike'
     	end
-	end
+    end
 	root :to => 'tweets#index'
 	resources :user_sessions
 	get 'user_index' => "users#index", as: :user_index

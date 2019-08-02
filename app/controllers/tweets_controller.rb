@@ -66,15 +66,15 @@ class TweetsController < ApplicationController
     @tweet.liked_by current_user
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
-      format.js
+      format.js { render layout: false }
     end
   end
 
   def unlike
-    @tweet.disliked_by current_user
+    @tweet.unliked_by current_user
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path }
-      format.js
+      format.js { render layout: false }
     end
   end
 
