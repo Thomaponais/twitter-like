@@ -11,15 +11,14 @@
               .media-body
                 strong= link_to tweet.user.username , tweet.user
                 p.media= tweet.tweet
+                span id="like-of-#{tweet.id}"
+                  = render partial: 'tweets/like', locals: { tweet: tweet } 
                 - if logged_in? && current_user.id == tweet.user_id
                   = link_to edit_tweet_path(tweet), class: "level-item" do
                     span.icon
                       i.fa.fa-pencil aria-hidden="true" 
                   = link_to tweet, method: :delete, data: { confirm: t('.confirm_delete') } do
                     span.icon
-                      i.fa.fa-trash-o aria-hidden="true" 
-                span.level-item.likes.data
-                  span id="like-of-#{tweet.id}"
-                    = render partial: 'tweets/like', locals: { tweet: tweet }                   
+                      i.fa.fa-trash-o aria-hidden="true"                   
         .pagination.justify-content-end
           = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"

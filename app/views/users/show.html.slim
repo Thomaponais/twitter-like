@@ -4,3 +4,5 @@
 - else
   = render 'tweets/feed', tweets: @user_tweets
 
+.pagination.justify-content-end
+  = paginate @user_tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
