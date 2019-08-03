@@ -1,1 +1,3 @@
-= render 'tweets/feed', tweet: @tweet, user: @user
+- if logged_in?
+	= render 'form', tweet: @tweet
+= render 'tweets/feed', tweets: @tweets

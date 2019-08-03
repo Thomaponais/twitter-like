@@ -1,27 +1,8 @@
-.container-fluid.mt-2
-  .row.d-flex.justify-content-center
-    .col-12.col-sm-11.col-md-10.col-lg-9.col-xl-8
-      ul.list-group.mt-2
-        - if @user_tweets.empty?
-          strong
-            p このユーザーはまだ投稿していません。
-        - else
-          - @user_tweets.each do |tweet|
-            li.list-group-item
-              .media
-                .media.align-self-start.mr-3
-                  p.image
-                    = image_tag tweet.user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed
-                .media-body
-                  strong= tweet.user.username
-                  p.media= tweet.tweet
-                  - if logged_in? && current_user.id == tweet.user_id
-                    = link_to edit_tweet_path(tweet), class: "level-item" do
-                      span.icon
-                        i.fa.fa-pencil aria-hidden="true" 
-                    = link_to tweet, method: :delete, data: { confirm: t('.confirm_delete') } do
-                      span.icon
-                        i.fa.fa-trash-o aria-hidden="true" 
-        .pagination.justify-content-end
-          = paginate @user_tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+- if @user_tweets.empty?
+  strong
+    p このユーザーはまだ投稿していません。
+- else
+  = render 'tweets/feed', tweets: @user_tweets
 
+.pagination.justify-content-end
+  = paginate @user_tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
