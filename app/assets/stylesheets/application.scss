@@ -1,6 +1,32 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
+.container-fluid{
+    display: table;
+    width: 100%;
+    padding: 0px;
+}
+
+.row {
+  padding: 0px;
+  margin: 0px;
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+
 // round images
 .image {
 	border-radius: 50%;

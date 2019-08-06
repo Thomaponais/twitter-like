@@ -67,6 +67,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user = User.find(params[:id])
+    current_user.follow(@user)
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render layout: false }
+    end
+  end
+
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.stop_following(@user)
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js { render layout: false }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

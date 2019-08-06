@@ -60,6 +60,7 @@ group :development do
   gem 'image_processing', '~> 1.2'
   gem 'kaminari'
   gem 'acts_as_votable', '~> 0.12.1'
+  gem 'acts_as_follower'
 end
 
 group :test do
