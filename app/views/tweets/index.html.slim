@@ -1,3 +1,5 @@
 - if logged_in?
 	= render 'form', tweet: @tweet
-= render 'tweets/feed', tweets: @tweets
+.container-fluid
+	.row.d-flex.justify-content-center.mb-2.no-gutters
+		= render 'tweets/feed', tweets: @tweets

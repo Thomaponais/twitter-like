@@ -1,0 +1,29 @@
+		nav.panel
+			article.media
+				.media-left
+					figure.image.is-64x64
+						= image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed
+				.media-content
+					strong = user.username
+					br/
+					small = user.username
+			.div.d-flex.justify-content-center
+				- if logged_in? and current_user != user
+					- if current_user.following? user
+						= link_to 'アンフォロー', unfollow_user_path, method: :get, class: "btn btn-primary btn-sm btn-block", remote: true
+					- else
+						= link_to 'フォロー' ,follow_user_path, method: :get, class: "btn btn-primary btn-sm btn-block", remote: true
+		.panel-block
+			.row.flex-nowrap.justify-content-center
+				.col
+					div
+						p.heading Tweets
+						p = user.tweets.count
+				.col
+					div
+						p.heading Following
+						p = user.follow_count
+				.col
+					div
+						p.heading Followers
+						p = user.followers_count

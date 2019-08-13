@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 	resources :tweets do
-  		member do
-    		get 'like'
-    		get 'unlike'
-    	end
-    end
+		member do
+  		get 'like'
+  		get 'unlike'
+  	end
+	end
+	resources :users do
+		member do
+			get 'follow'
+			get 'unfollow'
+		end
+  end
 	root :to => 'tweets#index'
 	resources :user_sessions
 	get 'user_index' => "users#index", as: :user_index

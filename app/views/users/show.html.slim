@@ -1,8 +1,9 @@
-- if @user_tweets.empty?
-  strong
-    p このユーザーはまだ投稿していません。
-- else
-  = render 'tweets/feed', tweets: @user_tweets
-
-.pagination.justify-content-end
-  = paginate @user_tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+.container-fluid
+  .row.d-flex.justify-content-center.mb-2.no-gutters
+    = render 'profil_info', user: @user
+    - if @user_tweets.empty?
+      strong
+        p このユーザーはまだ投稿していません。
+    - else
+      = render 'tweets/feed', tweets: @user_tweets
+    .col-12.col-sm-10.col-md-8.col-lg-3
