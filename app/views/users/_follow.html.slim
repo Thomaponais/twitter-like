@@ -1,21 +1,18 @@
 		nav.panel
 			article.media
 				.media-left
- 					figure.image.is-64x64
+					figure.image.is-64x64
 						= image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed
 				.media-content
 					strong = user.username
 					br/
 					small = user.username
 			.div.d-flex.justify-content-center
-				- if logged_in?
+				- if logged_in? and current_user != user
 					- if current_user.following? user
 						= link_to 'アンフォロー', unfollow_user_path, method: :get, class: "btn btn-primary btn-sm btn-block", remote: true
 					- else
 						= link_to 'フォロー' ,follow_user_path, method: :get, class: "btn btn-primary btn-sm btn-block", remote: true
-				- else
-					= link_to login_path, class: "fa fa-heart-o" do
-
 		.panel-block
 			.row.flex-nowrap.justify-content-center
 				.col
