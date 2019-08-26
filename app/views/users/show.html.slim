@@ -5,5 +5,5 @@
       strong
         p このユーザーはまだ投稿していません。
     - else
-      = render 'tweets/feed', tweets: @user_tweets
+      = render 'tweets/feed', tweets: @user_tweets.roots
     .col-12.col-sm-10.col-md-8.col-lg-3

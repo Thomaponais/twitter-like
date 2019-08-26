@@ -1,0 +1,28 @@
+.container-fluid
+  .row.no-gutters
+    .col.d-flex.flex-column.image_col
+      .row.no-gutters.justify-content-center
+        .col-12
+          = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+      .row.no-gutters.justify-content-center.flex-grow-1
+        .col-12.mt-2
+          - if tweet.children.exists?  && currentTweet_vl == true
+            div.vltweet
+    .col-11.right.pl-2.pb-1
+      - if older_brother?(tweet) && previousTweetLink == true
+        div.small Answer to #{link_to tweet.parent.user.username, tweet.parent}
+      strong=link_to tweet.user.username, tweet.user
+      div.tweet= tweet.tweet
+      div.button-tweet
+        span id="like-of-#{tweet.id}"
+          = render partial: 'tweets/like', locals: { tweet: tweet }
+        - if logged_in? && current_user.id == tweet.user_id
+          = link_to edit_tweet_path(tweet), class: "level-item" do
+            span.icon
+              i.fa.fa-pencil aria-hidden="true"
+          = link_to tweet, method: :delete, data: { confirm: t('.confirm_delete') } do
+            span.icon
+              i.fa.fa-trash-o aria-hidden="true"
+        - if logged_in?
+          i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
+          = render 'tweets/modal', tweet: tweet

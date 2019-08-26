@@ -61,6 +61,7 @@ group :development do
   gem 'kaminari'
   gem 'acts_as_votable', '~> 0.12.1'
   gem 'acts_as_follower'
+  gem 'awesome_nested_set'
 end
 
 group :test do
