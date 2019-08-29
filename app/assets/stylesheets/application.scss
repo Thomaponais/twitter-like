@@ -114,6 +114,11 @@ i.fa.fa-comment {
   padding: 10px 15px 0px 15px;
 }
 
+.list-group-item {
+  margin-left : -1px;
+  margin-right : -1px;
+}
+
 .list-group-tweet:hover {
   background-color: snow;
 }

@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like, :unlike]
-
+  before_action :require_user_permission, :only => [:edit, :update, :destroy]
   # GET /tweets
   # GET /tweets.json
   def index
@@ -87,5 +87,12 @@ class TweetsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
       params.require(:tweet).permit(:tweet, :parent_id)
+    end
+
+    def require_user_permission
+      unless @tweet.user == current_user
+        flash[:error] = 'You do not have delete permissions'
+        redirect_to root_path
+      end
     end
 end
