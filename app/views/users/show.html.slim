@@ -5,5 +5,14 @@
       strong
         p このユーザーはまだ投稿していません。
     - else
-      = render 'tweets/feed', tweets: @user_tweets
+      .col-12.col-sm-10.col-md-8.col-lg-6
+        ul.list-group.mt-2
+        - @user_tweets.roots.each do |tweet|
+          li.list-group-item
+            = link_to tweet, class:"overlay" do
+            div.inner
+              = render 'tweets/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: false
+        .pagination.justify-content-end
+          = paginate @user_tweets.roots, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+
     .col-12.col-sm-10.col-md-8.col-lg-3

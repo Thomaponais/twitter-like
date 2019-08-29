@@ -1,0 +1,35 @@
+.modal.fade.bs-example-modal-lg id="modal-#{tweet.id}" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      = form_with(model: Tweet.new, local: true) do |form|
+        .modal-header
+          button.close type='button' data-dismiss='modal'
+            span aria-hidden='true' &times;
+            span.sr-only Close
+        .modal-body
+          .container-fluid
+            - tweet.self_and_ancestors.each do |tweet|
+              .row.no-gutters
+                .col.d-flex.flex-column.image_col
+                  .row.no-gutters.justify-content-center
+                    .col-12
+                      = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+                  .row.no-gutters.justify-content-center.flex-grow-1
+                    .col-12.mt-2.mb-2
+                      div.vltweet
+                .col-10.right.ml-3
+                  strong=tweet.user.username
+                  div.tweet= tweet.tweet
+
+            .row.no-gutters
+              .col.d-flex.flex-column
+                .row.no-gutters.justify-content-center
+                  .col-12
+                    = image_tag current_user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+                .row.no-gutters.justify-content-center.flex-grow-1
+                  .col-12.mt-2.mb-2
+              .col-10.right.ml-3
+                = form.hidden_field :parent_id, value: tweet.id
+                = form.text_area :tweet, maxlength: "140", wrapper: false, placeholder: "返事する", class: "form-control", rows:"5", required: true
+        .modal-footer
+          = form.submit "ツイートする", class:"btn btn-primary"

@@ -1,0 +1,18 @@
+.container-fluid
+  .row.d-flex.justify-content-center.no-gutters
+    .col-12.col-sm-10.col-md-8.col-lg-6
+      ul.list-group.mt-2.border.border-bottom-0
+        - if @tweet.ancestors.exists?
+          - @tweet.ancestors.each do |ancestor|
+            li class=(!ancestor.descendants.exists? ? "list-group-tweet border-bottom" : "list-group-tweet")
+              = link_to ancestor, class:"overlay" do
+              div.inner
+                = render 'tweets/tweet', tweet: ancestor, currentTweet_vl: true, previousTweetLink: false
+        li.list-group-tweet.border-bottom.current
+          = render 'tweets/tweet', tweet: @tweet, currentTweet_vl: false, previousTweetLink: false
+        - if @tweet.children.exists?
+          - @tweet.descendants.each do |child|
+            li class=(!child.children.exists? ? "list-group-tweet border-bottom" : "list-group-tweet")
+              = link_to child, class:"overlay" do
+              div.inner
+                = render 'tweets/tweet', tweet: child, currentTweet_vl: false, previousTweetLink: false
