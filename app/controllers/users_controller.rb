@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+  skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :require_user_permission, :only => [:edit, :update, :destroy]
+
   # GET /users
   # GET /users.json
   def index
@@ -95,5 +97,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation, :salt, :avatar)
     end
-    
+
+    def require_user_permission
+      if logged_in? && @user != current_user
+        redirect_to edit_user_path(current_user)
+      elsif not logged_in?
+        redirect_to login_path, alert: "ログインしてください！"
+      end
+    end
+
 end

@@ -90,9 +90,10 @@ class TweetsController < ApplicationController
     end
 
     def require_user_permission
-      unless @tweet.user == current_user
-        flash[:error] = 'You do not have delete permissions'
+      if logged_in? && @tweet.user != current_user
         redirect_to root_path
+      elsif not logged_in?
+        redirect_to login_path, alert: "ログインしてください！"
       end
     end
 end
