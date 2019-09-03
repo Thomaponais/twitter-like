@@ -143,3 +143,57 @@ div.button-tweet {
 .tweet {
   word-break: break-all;
 }
+
+$btn-danger-color:#e57373;
+
+.btn-danger {
+  color: white;
+  background-color: $btn-danger-color;
+  border: none;
+
+}
+
+.btn-danger:hover {
+  color: white;
+  background-color: darken($btn-danger-color, 5%);
+  border: none;
+}
+
+.btn-danger:focus {
+  color: white;
+  background-color: $btn-danger-color;
+  border: none;
+}
+
+.btn-danger:active {
+  color: white;
+  background-color: darken($btn-danger-color, 5%);
+  border: none;
+}
+
+$btn-success-color:#4db6ac;
+
+.btn-success {
+  color: white;
+  background-color: $btn-success-color;
+  border: none;
+
+}
+
+.btn-success:hover {
+  color: white;
+  background-color: darken($btn-success-color, 5%);
+  border: none;
+}
+
+.btn-success:focus {
+  color: white;
+  background-color: $btn-success-color;
+  border: none;
+}
+
+.btn-success:active {
+  color: white;
+  background-color: darken($btn-success-color, 5%);
+  border: none;
+}
