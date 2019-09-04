@@ -41,14 +41,16 @@
 
 .fa-heart:hover {
   color: red;
+  text-decoration: none;
 }
 
 .fa-heart-o {
-  color: grey;
+  color: black;
 }
 
 .fa-heart-o:hover {
   color: red;
+  text-decoration: none;
 }
 
 textarea.form-control {
@@ -200,4 +202,9 @@ $btn-success-color:#4db6ac;
   color: white;
   background-color: darken($btn-success-color, 5%);
   border: none;
+}
+
+div[id*="follow-of-"] {
+  margin-left : -1px;
+  margin-right : -1px;
 }
