@@ -4,15 +4,15 @@
       ul.list-group.mt-2.border.border-bottom-0
         - if @tweet.ancestors.exists?
           - @tweet.ancestors.each do |ancestor|
-            li class=(!ancestor.descendants.exists? ? "list-group-tweet border-bottom" : "list-group-tweet")
+            li.list-group-tweet class=("border-bottom" if !ancestor.descendants.exists?)
               = link_to ancestor, class:"overlay" do
-              div.inner
+              .inner
                 = render 'tweets/tweet', tweet: ancestor, currentTweet_vl: true, previousTweetLink: false
         li.list-group-tweet.border-bottom.current
           = render 'tweets/tweet', tweet: @tweet, currentTweet_vl: false, previousTweetLink: false
         - if @tweet.children.exists?
           - @tweet.descendants.each do |child|
-            li class=(!child.children.exists? ? "list-group-tweet border-bottom" : "list-group-tweet")
+            li.list-group-tweet class=("border-bottom" if !child.children.exists?)
               = link_to child, class:"overlay" do
-              div.inner
-                = render 'tweets/tweet', tweet: child, currentTweet_vl: false, previousTweetLink: false
+              .inner
+                = render 'tweets/tweet', tweet: child, currentTweet_vl: true, previousTweetLink: false

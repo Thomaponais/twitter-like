@@ -3,8 +3,8 @@
     .modal-content
       = form_with(model: Tweet.new, local: true) do |form|
         .modal-header
-          button.close type='button' data-dismiss='modal'
-            span aria-hidden='true' &times;
+          button.close type="button" data-dismiss="modal"
+            span aria-hidden="true" &times;
             span.sr-only Close
         .modal-body
           .container-fluid
@@ -16,10 +16,10 @@
                       = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
                   .row.no-gutters.justify-content-center.flex-grow-1
                     .col-12.mt-2.mb-2
-                      div.vltweet
+                      .vltweet
                 .col-10.right.ml-3
                   strong=tweet.user.username
-                  div.tweet= tweet.tweet
+                  .tweet= tweet.tweet
 
             .row.no-gutters
               .col.d-flex.flex-column
