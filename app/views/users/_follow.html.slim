@@ -1,14 +1,14 @@
 .row.no-gutters.ml-2.mt-2.mb-2
-  .col-2.mr-2
+  .col.d-flex.flex-column.image_col.mr-2
     = image_tag user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
   .col
     strong = user.username
-  .col-5.pr-1.pt-1.text-right
+  .col-5.col-lg4.pr-1.pt-1.text-right
     - if logged_in? and current_user != user
       - if current_user.following? user
-        = link_to 'アンフォロー', unfollow_user_path, method: :get, class: "btn btn-primary btn-sm", remote: true
+        = link_to 'アンフォロー', unfollow_user_path, method: :get, class: "btn btn-danger btn-sm", remote: true
       - else
-        = link_to 'フォロー' ,follow_user_path, method: :get, class: "btn btn-primary btn-sm", remote: true
+        = link_to 'フォロー' ,follow_user_path, method: :get, class: "btn btn-success btn-sm", remote: true
 
 
 .row.flex-nowrap.justify-content-center
