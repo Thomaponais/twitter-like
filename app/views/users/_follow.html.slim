@@ -11,8 +11,8 @@
         = link_to 'フォロー' ,follow_user_path, method: :get, class: "btn btn-success btn-sm", remote: true
 
 
-.row.flex-nowrap.justify-content-center
-  .col
+.row.no-gutters.flex-nowrap.justify-content-center
+  .col.px-2
     p
       strong.heading Tweets
     p = user.tweets.count
@@ -20,7 +20,7 @@
     p
       strong.heading Following
     p = user.follow_count
-  .col
+  .col.px-2
     p
       strong.heading Followers
     p = user.followers_count

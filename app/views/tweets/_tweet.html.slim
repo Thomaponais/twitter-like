@@ -27,8 +27,10 @@
                   |  ツイートを削除する
       div.tweet.pr-2= tweet.tweet
       div.button-tweet
-        i.pr-2 id="like-of-#{tweet.id}"
+        span.pr-2 id="like-of-#{tweet.id}"
           = render partial: 'tweets/like', locals: { tweet: tweet }
         - if logged_in?
           i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
           = render 'tweets/modal', tweet: tweet
+        span.count.ml-1
+          = tweet.children.size
