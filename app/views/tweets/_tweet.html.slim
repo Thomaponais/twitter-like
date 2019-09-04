@@ -8,21 +8,29 @@
         .col-12.mt-2
           - if tweet.children.exists?  && currentTweet_vl == true
             div.vltweet
-    .col-11.right.pl-2.pb-1
-      - if older_brother?(tweet) && previousTweetLink == true
-        div.small Answer to #{link_to tweet.parent.user.username, tweet.parent}
-      strong=link_to tweet.user.username, tweet.user
-      div.tweet= tweet.tweet
+    .col-11.pl-2.pb-1
+      .row.no-gutters.pr-2
+        .col-11
+          - if older_brother?(tweet) && previousTweetLink == true
+            div.small #{link_to tweet.parent.user.username, tweet.parent} への返信
+          strong=link_to tweet.user.username, tweet.user
+        .col-1.text-right
+          - if logged_in? && current_user.id == tweet.user_id
+            dropdown
+              i.fa.fa-chevron-down id="dropdownMenu" aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
+              .dropdown-menu.dropdown-menu-right aria-labelledby="dropdownMenu"
+                = link_to edit_tweet_path(tweet), class: "dropdown-item" do
+                  i.fa.fa-pencil aria-hidden="true"
+                  |  ツイートを編集する
+                = link_to tweet, method: :delete, class: "dropdown-item", data: { confirm: t('.confirm_delete') } do
+                  i.fa.fa-trash-o aria-hidden="true"
+                  |  ツイートを削除する
+      div.tweet.pr-2= tweet.tweet
       div.button-tweet
-        span id="like-of-#{tweet.id}"
+        span.pr-2 id="like-of-#{tweet.id}"
           = render partial: 'tweets/like', locals: { tweet: tweet }
-        - if logged_in? && current_user.id == tweet.user_id
-          = link_to edit_tweet_path(tweet), class: "level-item" do
-            span.icon
-              i.fa.fa-pencil aria-hidden="true"
-          = link_to tweet, method: :delete, data: { confirm: t('.confirm_delete') } do
-            span.icon
-              i.fa.fa-trash-o aria-hidden="true"
         - if logged_in?
           i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
           = render 'tweets/modal', tweet: tweet
+        span.count.ml-1
+          = tweet.children.size

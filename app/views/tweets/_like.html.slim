@@ -1,13 +1,13 @@
 - if logged_in?
   - if current_user.liked? tweet
     = link_to unlike_tweet_path(tweet.id), remote: true, id: "unlike_#{tweet.id}", class:"fa fa-heart" do
-      span.count
-        = tweet.get_likes.size
+    span.count.ml-1
+      = tweet.get_likes.size
   - else
     = link_to like_tweet_path(tweet.id), remote: true, id: "like_#{tweet.id}", class:"fa fa-heart-o" do
-      span.count
-        = tweet.get_likes.size
+    span.count.ml-1
+      = tweet.get_likes.size
 - else
   = link_to login_path, class: "fa fa-heart-o" do
-    span.count
-      = tweet.get_likes.size                      
+  span.count.ml-1
+    = tweet.get_likes.size

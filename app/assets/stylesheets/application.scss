@@ -41,14 +41,16 @@
 
 .fa-heart:hover {
   color: red;
+  text-decoration: none;
 }
 
 .fa-heart-o {
-  color: grey;
+  color: black;
 }
 
 .fa-heart-o:hover {
   color: red;
+  text-decoration: none;
 }
 
 textarea.form-control {
@@ -73,6 +75,12 @@ ul{
   margin-right: -1px;
 }
 
+@media (min-width: 992px) {
+  ul {
+    margin-left: 0px;
+  }
+}
+
 li{
   position:relative;
 }
@@ -95,6 +103,13 @@ i.fa.fa-comment {
   pointer-events: all;
 }
 
+i.fa.fa-chevron-down {
+  pointer-events: all;
+}
+
+.pagination.justify-content-end {
+  margin-top: -1px;
+}
 .modal {
   overflow-y: auto;
 }
@@ -111,12 +126,7 @@ i.fa.fa-comment {
 .list-group-tweet {
   position: relative;
   display: block;
-  padding: 10px 15px 0px 15px;
-}
-
-.list-group-item {
-  margin-left : -1px;
-  margin-right : -1px;
+  padding: 10px 0px 0px 15px;
 }
 
 .list-group-tweet:hover {
@@ -142,4 +152,90 @@ div.button-tweet {
 
 .tweet {
   word-break: break-all;
+}
+
+$btn-danger-color:#e57373;
+
+.btn-danger {
+  color: white;
+  background-color: $btn-danger-color;
+  border: none;
+
+}
+
+.btn-danger:hover {
+  color: white;
+  background-color: darken($btn-danger-color, 5%);
+  border: none;
+}
+
+.btn-danger:focus {
+  color: white;
+  background-color: $btn-danger-color;
+  border: none;
+}
+
+.btn-danger:active {
+  color: white;
+  background-color: darken($btn-danger-color, 5%);
+  border: none;
+}
+
+$btn-success-color:#4db6ac;
+
+.btn-success {
+  color: white;
+  background-color: $btn-success-color;
+  border: none;
+
+}
+
+.btn-success:hover {
+  color: white;
+  background-color: darken($btn-success-color, 5%);
+  border: none;
+}
+
+.btn-success:focus {
+  color: white;
+  background-color: $btn-success-color;
+  border: none;
+}
+
+.btn-success:active {
+  color: white;
+  background-color: darken($btn-success-color, 5%);
+  border: none;
+}
+
+$btn-primary-color: #bbdefb;
+
+.btn-primary {
+  color: white;
+  background-color: darken($btn-primary-color, 15%);
+  border: none;
+
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: darken($btn-primary-color, 25%);
+  border: none;
+}
+
+.btn-primary:focus {
+  color: white;
+  background-color: $btn-primary-color;
+  border: none;
+}
+
+.btn-primary:active {
+  color: white;
+  background-color: darken($btn-primary-color, 25%);
+  border: none;
+}
+
+div[id*="follow-of-"] {
+  margin-left : -1px;
+  margin-right : -1px;
 }

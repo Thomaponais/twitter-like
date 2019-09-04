@@ -6,5 +6,5 @@
             = link_to tweet, class:"overlay" do
             div.inner
               = render 'tweets/tweet', tweet: tweet, currentTweet_vl: true, previousTweetLink: true
-      .pagination.justify-content-end
-        = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
+    .pagination.justify-content-end
+      = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"

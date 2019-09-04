@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :require_user_permission, :only => [:edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_tweet_not_found
+
   # GET /tweets
   # GET /tweets.json
   def index
@@ -90,9 +92,14 @@ class TweetsController < ApplicationController
     end
 
     def require_user_permission
-      unless @tweet.user == current_user
-        flash[:error] = 'You do not have delete permissions'
+      if logged_in? && @tweet.user != current_user
         redirect_to root_path
+      elsif not logged_in?
+        redirect_to login_path, alert: "ログインしてください！"
       end
+    end
+
+    def handle_tweet_not_found
+      redirect_to root_path, alert: "このツイートは存在していません"
     end
 end

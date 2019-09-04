@@ -3,11 +3,11 @@
     .col-12.col-sm-10.col-md-8.col-lg-7
       = form_with(model: user, local: true) do |form|
         - if user.errors.any?
-          #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert" 
+          #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert"
             ul
               - user.errors.full_messages.each do |message|
                 li= message
-            button.close aria-label="Close" data-dismiss="alert" type="button" 
+            button.close aria-label="Close" data-dismiss="alert" type="button"
               span aria-hidden="true"  ×
         .media
           - if user.avatar.attached?
@@ -16,26 +16,34 @@
           .media-body
             h2.mt-0= user.username
         .field
+          = form.label t('.email')
+          br/
+          = form.text_field :email, class: "form-control", required: true
+        .field
+          = form.label t('.password')
+          br/
+          = form.password_field :password, class: "form-control", required: true
+        .field
+          = form.label t('.password_confirmation')
+          br/
+          = form.password_field :password_confirmation, class: "form-control", required: true
+          br/
+        .field.text-center
+          = form.submit t('.edit_profile_submit'), class: "btn btn-primary"
+          br/
+          br/
+          hr/
+
+      = form_with(model: user, local: true) do |form|
+        .field
           = form.label t('.username')
           br/
           = form.text_field :username, autofocus: true, class: "form-control", required: true
         .field
-          = form.label t('.email')
-          br/
-          = form.text_field :email, class: "form-control",required: true
-        .field
-          = form.label t('.password')
-          br/
-          = form.password_field :password, class: "form-control"
-        .field
-          = form.label t('.password_confirmation')
-          br/
-          = form.password_field :password_confirmation, class: "form-control"
-        .field
           = form.label t('.avatar')
           br/
           = form.file_field :avatar, class: "form-control"
-        br/
-        .field
-          = form.submit t('.edit_profile_submit'), class: "btn btn-lg btn-primary btn-block"
+          br/
+        .field.text-center
+          = form.submit t('.edit_profile_submit'), class: "btn btn-primary"
           br/
