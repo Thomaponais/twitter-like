@@ -95,6 +95,10 @@ i.fa.fa-comment {
   pointer-events: all;
 }
 
+i.fa.fa-chevron-down {
+  pointer-events: all;
+}
+
 .modal {
   overflow-y: auto;
 }
@@ -111,7 +115,7 @@ i.fa.fa-comment {
 .list-group-tweet {
   position: relative;
   display: block;
-  padding: 10px 15px 0px 15px;
+  padding: 10px 0px 0px 15px;
 }
 
 .list-group-item {
