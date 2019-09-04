@@ -2,9 +2,9 @@
     ul.list-group.mt-2.border.border-bottom-0
       - tweets.each do |root|
         - root.self_and_descendants.each do |tweet|
-          li class=(!tweet.descendants.exists? ? "list-group-tweet border-bottom" : "list-group-tweet")
+          li.list-group-tweet class=("border-bottom" if !tweet.descendants.exists?)
             = link_to tweet, class:"overlay" do
-            div.inner
+            .inner
               = render 'tweets/tweet', tweet: tweet, currentTweet_vl: true, previousTweetLink: true
     .pagination.justify-content-end
       = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"

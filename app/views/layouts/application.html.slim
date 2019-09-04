@@ -28,7 +28,7 @@ html
           - else
             = link_to t('.register'), new_user_path, class:"btn btn-danger  mr-3"
             = link_to t('.login'), :login, class:"btn btn-success "
-    div
+    .notice
       - if notice
         .alert.alert-success.alert-dismissible.fade.show role="alert"
           p#notice= flash[:notice]

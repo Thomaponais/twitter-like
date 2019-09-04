@@ -10,7 +10,7 @@
           - @user_tweets.roots.each do |tweet|
             li.list-group-tweet.border-bottom
               = link_to tweet, class:"overlay" do
-              div.inner
+              .inner
                 = render 'tweets/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: false
         .pagination.justify-content-end
           = paginate @user_tweets.roots, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"

@@ -7,12 +7,12 @@
       .row.no-gutters.justify-content-center.flex-grow-1
         .col-12.mt-2
           - if tweet.children.exists?  && currentTweet_vl == true
-            div.vltweet
+            .vltweet
     .col-11.pl-2.pb-1
       .row.no-gutters.pr-2
         .col-11
           - if older_brother?(tweet) && previousTweetLink == true
-            div.small #{link_to tweet.parent.user.username, tweet.parent} への返信
+            small #{link_to tweet.parent.user.username, tweet.parent} への返信
           strong=link_to tweet.user.username, tweet.user
         .col-1.text-right
           - if logged_in? && current_user.id == tweet.user_id
@@ -25,12 +25,14 @@
                 = link_to tweet, method: :delete, class: "dropdown-item", data: { confirm: t('.confirm_delete') } do
                   i.fa.fa-trash-o aria-hidden="true"
                   |  ツイートを削除する
-      div.tweet.pr-2= tweet.tweet
-      div.button-tweet
+      .tweet.pr-2= tweet.tweet
+      .button-tweet
         span.pr-2 id="like-of-#{tweet.id}"
           = render partial: 'tweets/like', locals: { tweet: tweet }
         - if logged_in?
           i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
           = render 'tweets/modal', tweet: tweet
+        - else
+          i.fa.fa-comment
         span.count.ml-1
           = tweet.children.size
