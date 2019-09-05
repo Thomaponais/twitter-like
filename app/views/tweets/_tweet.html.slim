@@ -12,7 +12,8 @@
       .row.no-gutters.pr-2
         .col-11
           - if older_brother?(tweet) && previousTweetLink == true
-            small #{link_to tweet.parent.user.username, tweet.parent} への返信
+            #answer
+              small #{link_to tweet.parent.user.username, tweet.parent} への返信
           strong=link_to tweet.user.username, tweet.user
         .col-1.text-right
           - if logged_in? && current_user.id == tweet.user_id
