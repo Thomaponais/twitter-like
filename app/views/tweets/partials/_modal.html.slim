@@ -30,6 +30,6 @@
                   .col-12.mt-2.mb-2
               .col-10.right.ml-3
                 = form.hidden_field :parent_id, value: tweet.id
-                = form.text_area :tweet, maxlength: "140", wrapper: false, placeholder: "返事する", class: "form-control", rows:"5", required: true
+                = form.text_area :tweet, maxlength: "140", wrapper: false, placeholder: "返事する", class: "form-control", rows:"3", required: true, oninput:'this.style.height = "";this.style.height = this.scrollHeight + "px"'
         .modal-footer
           = form.submit "ツイートする", class:"btn btn-primary"

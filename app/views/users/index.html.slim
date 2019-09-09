@@ -2,7 +2,7 @@
   .row.d-flex.justify-content-center
     .col-12.col-sm-11.col-md-10.col-lg-9.col-xl-8
       .page-header.text-center.mt-2
-        h2= t('.user_title')
+        h2= "ユーザー"
         br/
       ul.list-group
         - @users.each do |user|
@@ -15,4 +15,3 @@
                   h4= user.username
         .pagination.justify-content-end
           = paginate @users, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"
-

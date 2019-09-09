@@ -3,30 +3,30 @@
     .col-11.col-sm-9.col-md-7.col-lg-5.col-lg-3
       = form_with(model: user, local: true) do |form|
         - if user.errors.any?
-          #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert" 
+          #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert"
             ul
               - user.errors.full_messages.each do |message|
                 li= message
-            button.close aria-label="Close" data-dismiss="alert" type="button" 
+            button.close aria-label="Close" data-dismiss="alert" type="button"
               span aria-hidden="true"  ×
-        h2.title.text-center= t('.register_title')
+        h2.title.text-center= "登録"
         br/
         .field
-          = form.label t('.username')
+          = form.label "ユーザーネーム"
           br/
           = form.text_field :username, autofocus: true, class: "form-control", required: true
         .field
-          = form.label t('.email')
+          = form.label "メールアドレス"
           br/
           = form.text_field :email, class: "form-control",required: true
         .field
-          = form.label t('.password')
+          = form.label "パスワード"
           br/
           = form.password_field :password, class: "form-control", required: true
         .field
-          = form.label t('.password_confirmation')
+          = form.label "パスワード確認"
           br/
           = form.password_field :password_confirmation, class: "form-control", required: true
           br/
         .field
-          = form.submit t('.sign_up_submit'), class: "btn btn-lg btn-primary btn-block"
+          = form.submit "新規登録", class: "btn btn-lg btn-primary btn-block"

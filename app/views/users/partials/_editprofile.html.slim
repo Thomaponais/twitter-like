@@ -16,34 +16,34 @@
           .media-body
             h2.mt-0= user.username
         .field
-          = form.label t('.email')
+          = form.label "メールアドレス"
           br/
           = form.text_field :email, class: "form-control", required: true
         .field
-          = form.label t('.password')
+          = form.label "パスワード"
           br/
           = form.password_field :password, class: "form-control", required: true
         .field
-          = form.label t('.password_confirmation')
+          = form.label "パスワード確認"
           br/
           = form.password_field :password_confirmation, class: "form-control", required: true
           br/
         .field.text-center
-          = form.submit t('.edit_profile_submit'), class: "btn btn-primary"
+          = form.submit "情報変更", class: "btn btn-primary"
           br/
           br/
           hr/
 
       = form_with(model: user, local: true) do |form|
         .field
-          = form.label t('.username')
+          = form.label "ユーザーネーム"
           br/
           = form.text_field :username, autofocus: true, class: "form-control", required: true
         .field
-          = form.label t('.avatar')
+          = form.label "プロフィール写真"
           br/
           = form.file_field :avatar, class: "form-control"
           br/
         .field.text-center
-          = form.submit t('.edit_profile_submit'), class: "btn btn-primary"
+          = form.submit "情報変更", class: "btn btn-primary"
           br/

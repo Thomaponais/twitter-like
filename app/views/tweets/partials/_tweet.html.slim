@@ -23,20 +23,20 @@
                 = link_to edit_tweet_path(tweet), class: "dropdown-item" do
                   i.fa.fa-pencil aria-hidden="true"
                   |  ツイートを編集する
-                = link_to tweet, method: :delete, class: "dropdown-item", data: { confirm: t('.confirm_delete') } do
+                = link_to tweet, method: :delete, class: "dropdown-item", data: { confirm: "ツイートを削除しますか" } do
                   i.fa.fa-trash-o aria-hidden="true"
                   |  ツイートを削除する
       .tweet.pr-2= tweet.tweet
       .button-tweet
         span.pr-2 class="like-of-#{tweet.id}"
-          = render partial: 'tweets/like', locals: { tweet: tweet }
+          = render partial: 'tweets/partials/like', locals: { tweet: tweet }
         - if logged_in?
           - if defined?(answer) && answer == true
             i.fa.fa-comment data-target="#modal-#{tweet.id}-answer" data-toggle="modal"
-            = render 'tweets/modal', tweet: tweet, answer: "-answer"
+            = render 'tweets/partials/modal', tweet: tweet, answer: "-answer"
           - else
             i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
-            = render 'tweets/modal', tweet: tweet, answer: ""
+            = render 'tweets/partials/modal', tweet: tweet, answer: ""
         - else
           i.fa.fa-comment
         span.count.ml-1

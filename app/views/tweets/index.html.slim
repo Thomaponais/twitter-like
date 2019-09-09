@@ -1,5 +1,5 @@
 - if logged_in?
-	= render 'form', tweet: @tweet
+	= render 'tweets/partials/form', tweet: @tweet
 .container-fluid
 	.row.d-flex.justify-content-center.no-gutters
-		= render 'tweets/feed', tweets: @tweets.roots
+		= render 'tweets/partials/feed', tweets: @tweets.roots
