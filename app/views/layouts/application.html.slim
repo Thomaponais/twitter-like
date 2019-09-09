@@ -30,13 +30,9 @@ html
             = link_to t('.login'), :login, class:"btn btn-success "
     .notice
       - if notice
-        .alert.alert-success.alert-dismissible.fade.show role="alert"
-          p#notice= flash[:notice]
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  ×
+        .alert.alert-success.alert-dismissible.fade.in.show role="alert"
+          #notice= flash[:notice]
       - if alert
-        .alert.alert-danger.alert-dismissible.fade.show role="alert"
-          p#alert= flash[:alert]
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  ×
+        .alert.alert-danger.alert-dismissible.fade.in.show role="alert"
+          #alert= flash[:alert]
     = yield

@@ -14,7 +14,7 @@
           - if older_brother?(tweet) && previousTweetLink == true
             #answer
               small #{link_to tweet.parent.user.username, tweet.parent} への返信
-          strong=link_to tweet.user.username, tweet.user
+          .username = link_to tweet.user.username, tweet.user
         .col-1.text-right
           - if logged_in? && current_user.id == tweet.user_id
             dropdown
@@ -28,11 +28,15 @@
                   |  ツイートを削除する
       .tweet.pr-2= tweet.tweet
       .button-tweet
-        span.pr-2 id="like-of-#{tweet.id}"
+        span.pr-2 class="like-of-#{tweet.id}"
           = render partial: 'tweets/like', locals: { tweet: tweet }
         - if logged_in?
-          i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
-          = render 'tweets/modal', tweet: tweet
+          - if defined?(answer) && answer == true
+            i.fa.fa-comment data-target="#modal-#{tweet.id}-answer" data-toggle="modal"
+            = render 'tweets/modal', tweet: tweet, answer: "-answer"
+          - else
+            i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
+            = render 'tweets/modal', tweet: tweet, answer: ""
         - else
           i.fa.fa-comment
         span.count.ml-1

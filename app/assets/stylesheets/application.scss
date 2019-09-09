@@ -6,6 +6,7 @@
     display: table;
     width: 100%;
     padding: 0px;
+    font-size: 15px;
 }
 
 .row {
@@ -130,7 +131,7 @@ i.fa.fa-chevron-down {
 }
 
 .list-group-tweet:hover {
-  background-color: snow;
+  background-color: lighten(#bbdefb, 10%);
 }
 
 .current:hover {
@@ -242,4 +243,50 @@ div[id*="follow-of-"] {
 
 .count {
   font-size: 14px;
+}
+
+.nav-item.nav-link {
+  padding: 0px;
+  margin-left: -1px;
+  margin-right : -1px;
+  margin-bottom: -1px;
+}
+
+@media (min-width: 992px) {
+  .nav-item.nav-link {
+    margin-left: 0px;
+  }
+}
+
+.nav-item.nav-link {
+  background: none;
+  color: black;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.nav-item.nav-link:hover {
+  background: lighten(#bbdefb, 10%);
+}
+
+.username {
+  a {
+    color: black;
+    font-weight: 700;
+  }
+}
+
+.alert {
+  position:fixed;
+  bottom: 0px;
+  margin-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 100%;
+  z-index:9999;
+  border-radius:0px;
+  text-align: center;
 }

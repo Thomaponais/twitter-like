@@ -1,4 +1,4 @@
-.modal.fade.bs-example-modal-lg id="modal-#{tweet.id}" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
+.modal.fade.bs-example-modal-lg id="modal-#{tweet.id}#{answer}" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
   .modal-dialog
     .modal-content
       = form_with(model: Tweet.new, local: true) do |form|
