@@ -2,7 +2,7 @@
     ul.list-group.mt-2.border.border-bottom-0
       - tweets.each do |root|
         - root.self_and_descendants.each do |tweet|
-          li.list-group-tweet class=("border-bottom" if !tweet.descendants.exists?)
+          li.list-group-tweet id="tweet_#{tweet.id}" class=("border-bottom" if !tweet.descendants.exists?)
             = link_to tweet, class:"overlay" do
             .inner
               = render 'tweets/partials/tweet', tweet: tweet, currentTweet_vl: true, previousTweetLink: true

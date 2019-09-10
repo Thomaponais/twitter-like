@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to root_path, notice: 'ユーザー情報の変更が完了しました。' }
+        format.html { redirect_back fallback_location: root_path, notice: 'ユーザー情報の変更が完了しました。' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :salt, :avatar)
+      params.require(:user).permit(:username, :email, :current_password,:password, :password_confirmation, :salt, :avatar)
     end
 
     def require_user_permission

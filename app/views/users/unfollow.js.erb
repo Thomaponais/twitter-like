@@ -1,3 +1,3 @@
 $("#unfollow_<%= @user.id %>").removeClass('btn btn-success').addClass('btn btn-danger');
 $("#unfollow_<%= @user.id %>").attr("href", '/users/<%= @user.id %>/follow');
-$("#follow-of-<%= @user.id %>").html("<%= j(render partial: 'users/partials/follow', locals: { user: @user }) %>");
+$("#profil-info-<%= @user.id %>").html("<%= j(render partial: 'users/partials/follow', locals: { user: @user }) %>");

@@ -27,15 +27,6 @@
   }
 }
 
-
-// round images
-.image {
-	border-radius: 50%;
-	img {
-		border-radius: 50%;
-	}
-}
-
 .fa-heart {
   color: red;
 }
@@ -92,7 +83,6 @@ li .overlay{
 }
 
 li .inner{
-  position:relative;
   pointer-events: none;
 }
 
@@ -125,7 +115,6 @@ i.fa.fa-chevron-down {
 }
 
 .list-group-tweet {
-  position: relative;
   display: block;
   padding: 10px 0px 0px 15px;
 }

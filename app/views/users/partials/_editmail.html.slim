@@ -1,0 +1,12 @@
+= form_with(model: user, local: true) do |form|
+  .field
+    = form.label "メールアドレス"
+    br/
+    = form.text_field :email, class: "form-control", required: true
+  .field
+    = form.label "パスワード"
+    br/
+    = form.password_field :current_password, id: "mail_change_password", class: "form-control", required: true
+    br/
+  .field.text-center
+    = form.submit "情報変更", class: "btn btn-primary"

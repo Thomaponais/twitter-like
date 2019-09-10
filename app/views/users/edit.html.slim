@@ -1,1 +1,32 @@
-= render 'users/partials/editprofile', user: @user
+- if @user.errors.any?
+  #error_explanation.alert.alert-danger.alert-dismissible.fade.show role="alert"
+    ul
+      - @user.errors.full_messages.each do |message|
+        li= message
+.container-fluid.mt-2
+  .row.d-flex.justify-content-center.mb-2
+    .col-12.col-sm-10.col-md-8.col-lg-3.mt-2
+      #v-pills-tab.nav.flex-column.nav-pills[role="tablist" aria-orientation="vertical"]
+        a#v-pills-home-tab.nav-link.active[data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"]
+          | 情報変更
+        a#v-pills-profile-tab.nav-link[data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"]
+          | メールアドレス変更
+        a#v-pills-messages-tab.nav-link[data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"]
+          | パスワード変更
+
+    .col-12.col-sm-10.col-md-8.col-lg-6
+      .media
+        - if @user.avatar.attached?
+          p.align-self-center.mr-3
+            = image_tag @user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+        .media-body
+          h2.mt-0= @user.username
+
+      #v-pills-tabContent.tab-content
+        #v-pills-home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="v-pills-home-tab"]
+          = render 'users/partials/editinfo', user: @user
+        #v-pills-profile.tab-pane.fade[role="tabpanel" aria-labelledby="v-pills-profile-tab"]
+          = render 'users/partials/editmail', user: @user
+        #v-pills-messages.tab-pane.fade[role="tabpanel" aria-labelledby="v-pills-messages-tab"]
+          = render 'users/partials/editpassword', user: @user
+    .col-12.col-sm-10.col-md-8.col-lg-3

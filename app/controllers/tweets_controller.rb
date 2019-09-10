@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :require_user_permission, :only => [:edit, :update, :destroy, :like, :unlike]
+  before_action :require_user_permission, :only => [:edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_tweet_not_found
 
   # GET /tweets
@@ -59,7 +59,7 @@ class TweetsController < ApplicationController
   def destroy
     @tweet.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'ツーイトの削除が完了しました。' }
+      format.html { redirect_back fallback_location: root_path, notice: 'ツーイトの削除が完了しました。' }
       format.json { head :no_content }
     end
   end

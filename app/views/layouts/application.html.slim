@@ -30,9 +30,9 @@ html
             = link_to "ログイン", :login, class:"btn btn-success "
     .notice
       - if notice
-        .alert.alert-success.alert-dismissible.fade.in.show role="alert"
+        #fade.alert.alert-success.alert-dismissible.fade.in.show role="alert"
           #notice= flash[:notice]
       - if alert
-        .alert.alert-danger.alert-dismissible.fade.in.show role="alert"
+        #fade.alert.alert-danger.alert-dismissible.fade.in.show role="alert"
           #alert= flash[:alert]
     = yield
