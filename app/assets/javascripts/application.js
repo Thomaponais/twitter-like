@@ -24,3 +24,23 @@ $(document).on('turbolinks:load', function() {
     });
   }, 3000);
 });
+
+$(document).ready(function(){
+$('a[data-toggle="tab"]').on('tab', function (e) {
+  localStorage.setItem('activeTab', $(e.target).attr('href'));
+});
+var activeTab = localStorage.getItem('activeTab');
+if(activeTab){
+  $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+}
+});
+
+$(document).ready(function(){
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
+  });
+  var activeTab = localStorage.getItem('activeTab');
+  if(activeTab){
+    $('.nav-pills a[href="' + activeTab + '"]').tab('show');
+  }
+  });
