@@ -1,3 +1,120 @@
 // Place all the styles related to the Tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fa-heart {
+  color: red;
+  &:hover {
+    color: red;
+    text-decoration: none;
+  }
+}
+
+.fa-heart-o {
+  color: black;
+  &:hover {
+    color: red;
+    text-decoration: none;
+  }
+}
+
+textarea.form-control {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -webkit-appearance:none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  padding: 5px;
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+ul {
+  margin-left: -1px;
+  margin-right: -1px;
+  @media (min-width: 992px) {
+    margin-left: 0px;
+  }
+
+  li {
+    position:relative;
+
+    .overlay {
+      position:absolute;
+      left:0; top:0; bottom:0; right:0;
+    }
+
+    .inner{
+      pointer-events: none;
+      a {
+        pointer-events: all;
+      }
+    }
+
+    &.list-group-tweet {
+      display: block;
+      padding: 10px 0px 0px 15px;
+      &:hover {
+        background-color: lighten(#bbdefb, 10%);
+      }
+
+      &.current:hover {
+        background-color: white;
+      }
+
+      &.media {
+        background-color: white;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+i.fa.fa-comment {
+  pointer-events: all;
+}
+
+i.fa.fa-chevron-down {
+  pointer-events: all;
+}
+
+.pagination.justify-content-end {
+  margin-top: -1px;
+}
+
+.vltweet{
+  width: 3px;
+  background-color: rgb(47, 48, 49);
+  height: 100%;
+  min-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.count {
+  font-size: 14px;
+}
+
+.username {
+  a {
+    color: black;
+    font-weight: 700;
+  }
+}
+
+.button-tweet {
+  margin-top: 10px;
+}
+
+.image_col {
+  max-width: 49px;
+}
+
+.tweet {
+  word-break: break-all;
+}

@@ -26,7 +26,7 @@ html
             = link_to "情報変更", edit_user_path(current_user.id), class:"btn btn-success mr-3"
             = link_to "ログアウト", logout_path, method: :delete, class:"btn btn-danger"
           - else
-            = link_to "新規登録", new_user_path, class:"btn btn-danger  mr-3"
+            = link_to "新規登録", new_user_path, class:"btn btn-danger mr-3"
             = link_to "ログイン", :login, class:"btn btn-success "
     .notice
       - if notice

@@ -1,201 +1,87 @@
 @import "bootstrap";
 @import "font-awesome";
+@import "users";
+@import "tweets";
+/*
+ *= require_tree .
+ *= require main
+ *= require_self
+ */
 
-
-.container-fluid{
+.container-fluid {
     display: table;
     width: 100%;
     padding: 0px;
     font-size: 15px;
+
+    .row {
+      padding: 0px;
+      margin: 0px;
+
+      .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+
+        > .col,
+        > [class*="col-"] {
+          padding-right: 0;
+          padding-left: 0;
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+    }
 }
 
-.row {
-  padding: 0px;
-  margin: 0px;
-}
-
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-.fa-heart {
-  color: red;
-}
-
-.fa-heart:hover {
-  color: red;
-  text-decoration: none;
-}
-
-.fa-heart-o {
-  color: black;
-}
-
-.fa-heart-o:hover {
-  color: red;
-  text-decoration: none;
-}
-
-textarea.form-control {
-  border: none;
-  overflow: auto;
-  outline: none;
-  -webkit-box-shadow: none;
-  -webkit-appearance:none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  resize: none;
-  padding: 5px;
-}
-
-.form-control:focus{
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
-ul{
-  margin-left: -1px;
-  margin-right: -1px;
-}
-
-@media (min-width: 992px) {
-  ul {
-    margin-left: 0px;
-  }
-}
-
-li{
-  position:relative;
-}
-
-li .overlay{
-  position:absolute;
-  left:0; top:0; bottom:0; right:0;
-}
-
-li .inner{
-  pointer-events: none;
-}
-
-li .inner a {
-  pointer-events: all;
-}
-
-i.fa.fa-comment {
-  pointer-events: all;
-}
-
-i.fa.fa-chevron-down {
-  pointer-events: all;
-}
-
-.pagination.justify-content-end {
-  margin-top: -1px;
-}
 .modal {
   overflow-y: auto;
 }
 
-.vltweet{
-  width: 3px;
-  background-color: rgb(47, 48, 49);
-  height: 100%;
-  min-height: 30px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.list-group-tweet {
-  display: block;
-  padding: 10px 0px 0px 15px;
-}
-
-.list-group-tweet:hover {
-  background-color: lighten(#bbdefb, 10%);
-}
-
-.current:hover {
-  background-color: white;
-}
-
-.current .media {
-  background-color: white;
-  font-size: 1.5rem;
-}
-
-.button-tweet {
-  margin-top: 10px;
-}
-
-.image_col {
-  max-width: 49px;
-}
-
-.tweet {
-  word-break: break-all;
-}
 
 $btn-danger-color:#e57373;
 
 .btn-danger {
-  color: white;
   background-color: $btn-danger-color;
   border: none;
 
-}
+  &:hover {
+    background-color: darken($btn-danger-color, 5%);
+  }
 
-.btn-danger:hover {
-  color: white;
-  background-color: darken($btn-danger-color, 5%);
-  border: none;
-}
+  &:focus {
+    background-color: darken($btn-danger-color, 5%);
+  }
 
-.btn-danger:focus {
-  color: white;
-  background-color: $btn-danger-color;
-  border: none;
-}
+  &:active {
+    background-color: darken($btn-danger-color, 5%);
+  }
 
-.btn-danger:active {
-  color: white;
-  background-color: darken($btn-danger-color, 5%);
-  border: none;
+  &:not(:disabled):not(.disabled):active  {
+    background-color: darken($btn-danger-color, 5%);
+  }
 }
 
 $btn-success-color:#4db6ac;
 
 .btn-success {
-  color: white;
   background-color: $btn-success-color;
   border: none;
 
-}
+  &:hover {
+    background-color: darken($btn-success-color, 5%);
+  }
 
-.btn-success:hover {
-  color: white;
-  background-color: darken($btn-success-color, 5%);
-  border: none;
-}
+  &:focus {
+    background-color: darken($btn-success-color, 5%);
+  }
 
-.btn-success:focus {
-  color: white;
-  background-color: $btn-success-color;
-  border: none;
-}
+  &:active {
+    background-color: darken($btn-success-color, 5%);
+  }
 
-.btn-success:active {
-  color: white;
-  background-color: darken($btn-success-color, 5%);
-  border: none;
+  &:not(:disabled):not(.disabled):active  {
+    background-color: darken($btn-success-color, 5%);
+  }
 }
 
 $btn-primary-color: #bbdefb;
@@ -205,64 +91,20 @@ $btn-primary-color: #bbdefb;
   background-color: darken($btn-primary-color, 15%);
   border: none;
 
-}
-
-.btn-primary:hover {
-  color: white;
-  background-color: darken($btn-primary-color, 25%);
-  border: none;
-}
-
-.btn-primary:focus {
-  color: white;
-  background-color: $btn-primary-color;
-  border: none;
-}
-
-.btn-primary:active {
-  color: white;
-  background-color: darken($btn-primary-color, 25%);
-  border: none;
-}
-
-div[id*="follow-of-"] {
-  margin-left : -1px;
-  margin-right : -1px;
-}
-
-.count {
-  font-size: 14px;
-}
-
-.nav-item.nav-link {
-  padding: 0px;
-  margin-left: -1px;
-  margin-right : -1px;
-  margin-bottom: -1px;
-}
-
-@media (min-width: 992px) {
-  .nav-item.nav-link {
-    margin-left: 0px;
+  &:hover {
+    background-color: darken($btn-primary-color, 25%);
   }
-}
 
-.nav-item.nav-link {
-  background: none;
-  color: black;
-  display: inline-block;
-  padding: 10px 15px;
-  cursor: pointer;
-}
+  &:focus {
+    background-color: darken($btn-primary-color, 25%);
+  }
 
-.nav-item.nav-link:hover {
-  background: lighten(#bbdefb, 10%);
-}
+  &:active {
+    background-color: darken($btn-primary-color, 25%);
+  }
 
-.username {
-  a {
-    color: black;
-    font-weight: 700;
+  &:not(:disabled):not(.disabled):active  {
+    background-color: darken($btn-primary-color, 25%);
   }
 }
 
@@ -270,10 +112,7 @@ div[id*="follow-of-"] {
   position:fixed;
   bottom: 0px;
   margin-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  padding: 6px 20px 6px 20px;
   width: 100%;
   z-index:9999;
   border-radius:0px;
