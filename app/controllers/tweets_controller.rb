@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   # GET /tweets/1.json
   def show
+    @tweet = Tweet.find(params[:id])
   end
 
   # GET /tweets/new
@@ -57,6 +58,9 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
+    @tweet = Tweet.find(params[:id])
+    @tweet.delete_tweet_keep_sub_tweets
+    @tweet.reload
     @tweet.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, notice: 'ツーイトの削除が完了しました。' }

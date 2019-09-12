@@ -28,7 +28,7 @@
                   |  ツイートを削除する
       .tweet.pr-2= tweet.tweet
       .button-tweet
-        span.pr-2 class="like-of-#{tweet.id}"
+        span.mr-2 class="like-of-#{tweet.id}"
           = render partial: 'tweets/partials/like', locals: { tweet: tweet }
         - if logged_in?
           - if defined?(answer) && answer == true
@@ -39,5 +39,5 @@
             = render 'tweets/partials/modal', tweet: tweet, answer: ""
         - else
           i.fa.fa-comment
-        span.count.ml-1
+        span.count
           = tweet.children.size
