@@ -46,7 +46,7 @@ $(document).ready(function(){
   });
 
   $(document).ready(function () {
-    $('input[type="submit"]').attr('disabled', true);
+    $('input:submit.tweet_submit').attr('disabled', true);
     $('input[type="text"],textarea').on('keyup', function () {
         var textarea_value = $("#tweet_tweet").val();
         if (textarea_value != '' && textarea_value.trim() != '') {
