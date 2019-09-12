@@ -69,6 +69,21 @@ i.fa.fa-chevron-down {
 
 .pagination.justify-content-end {
   margin-top: -1px;
+  .page-item {
+    .page-link {
+    color: darken(#bbdefb, 20%);
+    background-color : white;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    }
+    &.active {
+      .page-link {
+        background-color: darken(#bbdefb, 20%);
+        border-color: darken(#bbdefb, 20%);
+        color : white;
+      }
+    }
+  }
 }
 
 .vltweet{
@@ -104,10 +119,6 @@ i.fa.fa-chevron-down {
 
 .tweet {
   word-break: break-all;
-}
-
-.modal {
-  overflow-y: auto;
 }
 
 [class*="like-of-"] {

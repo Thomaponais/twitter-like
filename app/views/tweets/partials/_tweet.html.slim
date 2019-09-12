@@ -8,14 +8,13 @@
         .col-12.mt-2
           - if tweet.children.exists?  && currentTweet_vl == true
             .vltweet
-    .col-11.pl-2.pb-1
-      .row.no-gutters.pr-2
-        .col-11
-          - if older_brother?(tweet) && previousTweetLink == true
-            #answer
-              small #{link_to tweet.parent.user.username, tweet.parent} への返信
-          .username = link_to tweet.user.username, tweet.user
-        .col-1.text-right
+    .col-11.pl-2.pb-1.pr-3
+      .tweet_content
+        - if older_brother?(tweet) && previousTweetLink == true
+          #answer
+            small #{link_to tweet.parent.user.username, tweet.parent} への返信
+        span.username = link_to tweet.user.username, tweet.user
+        span.tweet_chevron.pull-right
           - if logged_in? && current_user.id == tweet.user_id
             dropdown
               i.fa.fa-chevron-down id="dropdownMenu" aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
@@ -26,17 +25,17 @@
                 = link_to tweet, method: :delete, class: "dropdown-item delete", data: { confirm: "ツイートを削除しますか" } do
                   i.fa.fa-trash-o aria-hidden="true"
                   |  ツイートを削除する
-      .tweet.pr-2= tweet.tweet
+      .tweet= tweet.tweet
       .button-tweet
         span.mr-2 class="like-of-#{tweet.id}"
           = render partial: 'tweets/partials/like', locals: { tweet: tweet }
         - if logged_in?
           - if defined?(answer) && answer == true
             i.fa.fa-comment data-target="#modal-#{tweet.id}-answer" data-toggle="modal"
-            = render 'tweets/partials/modal', tweet: tweet, answer: "-answer"
+            = render 'tweets/partials/reply_modal', tweet: tweet, answer: "-answer"
           - else
             i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
-            = render 'tweets/partials/modal', tweet: tweet, answer: ""
+            = render 'tweets/partials/reply_modal', tweet: tweet, answer: ""
         - else
           i.fa.fa-comment
         span.count

@@ -15,21 +15,17 @@
                     .col-12
                       = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
                   .row.no-gutters.justify-content-center.flex-grow-1
-                    .col-12.mt-2.mb-2
+                    .col-12.mt-2
                       .vltweet
                 .col-10.right.ml-3
                   strong=tweet.user.username
                   .tweet= tweet.tweet
 
-            .row.no-gutters
-              .col.d-flex.flex-column
-                .row.no-gutters.justify-content-center
-                  .col-12
-                    = image_tag current_user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
-                .row.no-gutters.justify-content-center.flex-grow-1
-                  .col-12.mt-2.mb-2
+            .row.no-gutters.mt-2
+              .col.d-flex.flex-column.image_col
+                = image_tag current_user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
               .col-10.right.ml-3
                 = form.hidden_field :parent_id, value: tweet.id
-                = form.text_area :tweet, maxlength: "140", wrapper: false, placeholder: "返事する", class: "form-control", rows:"3", required: true, oninput:'this.style.height = "";this.style.height = this.scrollHeight + "px"'
+                = form.text_area :tweet, maxlength: "140", wrapper: false, placeholder: "返事する", class: "form-control answer_text", rows:"3", required: true, oninput:'this.style.height = "";this.style.height = this.scrollHeight + "px"'
         .modal-footer
-          = form.submit "ツイートする", class:"btn btn-primary"
+          = form.submit "ツイートする", class:"btn btn-primary answer_submit"

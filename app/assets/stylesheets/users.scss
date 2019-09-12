@@ -14,9 +14,13 @@ div[id*="profil-info-"] {
   color: black;
   padding: 10px 15px;
   cursor: pointer;
-  border-radius:0px;
+  border-radius: 0px;
 
   &:hover {
+    background: lighten(#bbdefb, 5%);
+  }
+
+  &.active {
     background: lighten(#bbdefb, 10%);
   }
 
