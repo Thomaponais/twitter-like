@@ -1,4 +1,4 @@
-.modal.fade.bs-example-modal-lg id="modal-#{tweet.id}#{answer}" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
+.modal.fade.bs-reply-modal-lg id="modal-#{tweet.id}#{answer}" tabindex='-1' role='dialog' aria-labelledby="Modal Title" aria-hidden='true'
   .modal-dialog
     .modal-content
       = form_with(model: Tweet.new, local: true) do |form|
@@ -13,7 +13,7 @@
                 .col.d-flex.flex-column.image_col
                   .row.no-gutters.justify-content-center
                     .col-12
-                      = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+                      = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
                   .row.no-gutters.justify-content-center.flex-grow-1
                     .col-12.mt-2
                       .vltweet

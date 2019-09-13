@@ -3,7 +3,7 @@
     .col.d-flex.flex-column.image_col
       .row.no-gutters.justify-content-center
         .col-12
-          = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+          = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
       .row.no-gutters.justify-content-center.flex-grow-1
         .col-12.mt-2
           - if tweet.children.exists?  && currentTweet_vl == true
