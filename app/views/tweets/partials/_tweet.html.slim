@@ -1,0 +1,42 @@
+.container-fluid
+  .row.no-gutters
+    .col.d-flex.flex-column.image_col
+      .row.no-gutters.justify-content-center
+        .col-12
+          = image_tag tweet.user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
+      .row.no-gutters.justify-content-center.flex-grow-1
+        .col-12.mt-2
+          - if tweet.children.exists?  && currentTweet_vl == true
+            .vltweet
+    .col-11.pl-2.pb-1.pr-3
+      .tweet_content
+        - if older_brother?(tweet) && previousTweetLink == true
+          #answer
+            small #{link_to tweet.parent.user.username, tweet.parent} への返信
+        span.username = link_to tweet.user.username, tweet.user
+        span.tweet_chevron.pull-right
+          - if logged_in? && current_user.id == tweet.user_id
+            dropdown
+              i.fa.fa-chevron-down id="dropdownMenu" aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
+              .dropdown-menu.dropdown-menu-right aria-labelledby="dropdownMenu"
+                = link_to edit_tweet_path(tweet), class: "dropdown-item" do
+                  i.fa.fa-pencil aria-hidden="true"
+                  |  ツイートを編集する
+                = link_to tweet, method: :delete, class: "dropdown-item delete", data: { confirm: "ツイートを削除しますか" } do
+                  i.fa.fa-trash-o aria-hidden="true"
+                  |  ツイートを削除する
+      .tweet= tweet.tweet
+      .button-tweet
+        span.mr-2 class="like-of-#{tweet.id}"
+          = render partial: 'tweets/partials/like', locals: { tweet: tweet }
+        - if logged_in?
+          - if defined?(answer) && answer == true
+            i.fa.fa-comment data-target="#modal-#{tweet.id}-answer" data-toggle="modal"
+            = render 'tweets/partials/reply_modal', tweet: tweet, answer: "-answer"
+          - else
+            i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
+            = render 'tweets/partials/reply_modal', tweet: tweet, answer: ""
+        - else
+          i.fa.fa-comment
+        span.count
+          = tweet.children.size

@@ -1,0 +1,12 @@
+= form_with(model: user, local: true) do |form|
+  .field
+    = form.label "ユーザーネーム"
+    br/
+    = form.text_field :username, autofocus: true, class: "form-control", required: true
+  .field
+    = form.label "プロフィール写真"
+    br/
+    = form.file_field :avatar, class: "form-control"
+    br/
+  .field.text-center
+    = form.submit "情報変更", class: "btn btn-primary"

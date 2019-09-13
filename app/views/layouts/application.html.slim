@@ -15,28 +15,24 @@ html
       #navbarTogglerDemo02.collapse.navbar-collapse
         ul.navbar-nav.mr-auto.mt-2.mt-lg-0
           li.nav-item
-            = link_to t('.home'), root_path, class:"nav-link"
+            = link_to "ホームページ", root_path, class:"nav-link"
           - if logged_in?
             li.nav-item
-              = link_to t('.my_page'), current_user, class:"nav-link"
+              = link_to "マイページ", current_user, class:"nav-link"
           li.nav-item
-            = link_to t('.users'), :users, class:"nav-link"
+            = link_to "ユーザー", :users, class:"nav-link"
         form.form-inline.my-2.my-lg-0
           - if logged_in?
-            = link_to t('.edit_profile'), edit_user_path(current_user.id), class:"btn btn-success mr-3"
-            = link_to t('.logout'), logout_path, method: :delete, class:"btn btn-danger"
+            = link_to "情報変更", edit_user_path(current_user.id), class:"btn btn-success mr-3"
+            = link_to "ログアウト", logout_path, method: :delete, class:"btn btn-danger"
           - else
-            = link_to t('.register'), new_user_path, class:"btn btn-danger  mr-3"
-            = link_to t('.login'), :login, class:"btn btn-success "
+            = link_to "新規登録", new_user_path, class:"btn btn-danger mr-3"
+            = link_to "ログイン", :login, class:"btn btn-success "
     .notice
       - if notice
-        .alert.alert-success.alert-dismissible.fade.show role="alert"
-          p#notice= flash[:notice]
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  ×
+        #fade.alert.alert-success.alert-dismissible.fade.in.show role="alert"
+          #notice= flash[:notice]
       - if alert
-        .alert.alert-danger.alert-dismissible.fade.show role="alert"
-          p#alert= flash[:alert]
-          button.close aria-label="Close" data-dismiss="alert" type="button"
-            span aria-hidden="true"  ×
+        #fade.alert.alert-danger.alert-dismissible.fade.in.show role="alert"
+          #alert= flash[:alert]
     = yield

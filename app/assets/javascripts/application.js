@@ -17,8 +17,30 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-window.setTimeout(function() {
-  $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+$(document).on('turbolinks:load', function() {
+  window.setTimeout(function() {
+    $("#fade.alert").fadeTo(1000, 0).slideUp(1000, function(){
       $(this).remove();
+    });
+  }, 3000);
+});
+
+$(document).on('turbolinks:load', function(){
+$('a[data-toggle="tab"]').on('tab', function (e) {
+  localStorage.setItem('activeTab', $(e.target).attr('href'));
+});
+var activeTab = localStorage.getItem('activeTab');
+if(activeTab){
+  $('.nav-tabs a[href="' + activeTab + '"]').tab('show');
+}
+});
+
+$(document).on('turbolinks:load', function(){
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
   });
-}, 3000);
+  var activeTab = localStorage.getItem('activeTab');
+  if(activeTab){
+    $('.nav-pills a[href="' + activeTab + '"]').tab('show');
+  }
+  });
