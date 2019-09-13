@@ -3,9 +3,18 @@
     ul
       - @user.errors.full_messages.each do |message|
         li= message
+    button.close aria-label="Close" data-dismiss="alert" type="button"
+      span aria-hidden="true" &times;
 .container-fluid.mt-2
+  .row.d-flex.justify-content-center.mt-2
+    .col-12.col-sm-10.col-md-8.col-lg-6.mb-3
+      - if @user.avatar.attached?
+        .avatar
+          = image_tag @user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
+        .profil_username.ml-3
+          h2= @user.username
   .row.d-flex.justify-content-center.mb-2
-    .col-12.col-sm-10.col-md-8.col-lg-3.mt-2
+    .col-12.col-sm-10.col-md-8.col-lg-3.mt-2.mb-3
       #v-pills-tab.nav.flex-column.nav-pills[role="tablist" aria-orientation="vertical"]
         a#v-pills-home-tab.nav-link.active[data-toggle="tab" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"]
           | 情報変更
@@ -15,12 +24,6 @@
           | パスワード変更
 
     .col-12.col-sm-10.col-md-8.col-lg-6
-      .media
-        - if @user.avatar.attached?
-          p.align-self-center.mr-3
-            = image_tag @user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
-        .media-body
-          h2.mt-0= @user.username
 
       #v-pills-tabContent.tab-content
         #v-pills-home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="v-pills-home-tab"]

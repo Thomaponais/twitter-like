@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function() {
   }, 3000);
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
 $('a[data-toggle="tab"]').on('tab', function (e) {
   localStorage.setItem('activeTab', $(e.target).attr('href'));
 });
@@ -35,7 +35,7 @@ if(activeTab){
 }
 });
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     localStorage.setItem('activeTab', $(e.target).attr('href'));
   });

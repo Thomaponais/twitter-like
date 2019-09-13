@@ -1,6 +1,6 @@
 .row.no-gutters.ml-2.mt-2.mb-2
   .col.d-flex.flex-column.image_col.mr-2
-    = image_tag user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+    = image_tag user.avatar.variant(combine_options:{resize:"49x49^",crop:"49x49+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
   .col
     strong = user.username
   .col-5.col-lg4.pr-1.pt-1.text-right

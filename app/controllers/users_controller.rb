@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         format.html { redirect_back fallback_location: root_path, notice: 'ユーザー情報の変更が完了しました。' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { redirect_back fallback_location: root_path }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

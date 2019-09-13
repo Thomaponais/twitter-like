@@ -10,7 +10,7 @@
             = link_to(user) do
               .media
                 .profile-image.mr-3
-                  = image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed, class: "img-fluid rounded-circle"
+                  = image_tag user.avatar.variant(combine_options:{resize:"64x64^",crop:"64x64+0+0",gravity: :center}).processed, class: "user_avatar img-fluid rounded-circle"
                 .media-body.align-self-center
                   h4= user.username
         .pagination.justify-content-end
