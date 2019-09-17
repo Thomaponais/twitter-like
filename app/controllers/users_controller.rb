@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :require_login, only: [:index, :new, :create]
-  before_action :require_user_permission, :only => [:edit, :update, :destroy]
+  before_action :require_user_permission, only:  [:edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_user_not_found
 
   # GET /users

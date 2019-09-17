@@ -2,7 +2,7 @@ class Tweet < ApplicationRecord
   belongs_to :user
 	validates :tweet, presence: true, length: { maximum: 140 }
   acts_as_votable
-  acts_as_nested_set :dependent => :nullify
+  acts_as_nested_set dependent: :nullify
 
   def delete_tweet_keep_sub_tweets
     if self.child?

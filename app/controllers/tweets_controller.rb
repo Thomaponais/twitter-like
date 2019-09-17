@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :require_user_permission, :only => [:edit, :update, :destroy]
+  before_action :require_user_permission, only: [:edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :handle_tweet_not_found
 
   # GET /tweets
