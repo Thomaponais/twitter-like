@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'like'
       get 'unlike'
+      get 'reply'
     end
   end
   resources :users do
@@ -11,12 +12,12 @@ Rails.application.routes.draw do
       get 'unfollow'
     end
   end
-  root :to => 'tweets#index'
-  resources :user_sessions
-  get 'user_index' => "users#index", as: :user_index
+  root to: 'tweets#index'
+  resources :user_sessions, only: [:new, :create, :destroy]
+  get 'user_index', to: "users#index", as: :user_index
   resources :users
-  get 'login' => 'user_sessions#new', as: :login
-  delete 'logout' => 'user_sessions#destroy', as: :logout
+  get 'login', to: 'user_sessions#new', as: :login
+  delete 'logout', to: 'user_sessions#destroy', as: :logout
   if Rails.env.production?
     get '*path', to: redirect('/'), constraints: lambda { |req|
       # 'rails/active_storage'が含まれているパスはリダイレクト対象外にする

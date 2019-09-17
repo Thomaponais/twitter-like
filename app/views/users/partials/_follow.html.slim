@@ -4,7 +4,7 @@
   .col
     strong = user.username
   .col-5.col-lg4.pr-1.pt-1.text-right
-    - if logged_in? and current_user != user
+    - if logged_in? && current_user != user
       - if current_user.following? user
         = link_to 'アンフォロー', unfollow_user_path, method: :get, class: "btn btn-danger btn-sm", remote: true
       - else

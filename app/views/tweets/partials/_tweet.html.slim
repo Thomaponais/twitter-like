@@ -31,12 +31,12 @@
           = render partial: 'tweets/partials/like', locals: { tweet: tweet }
         - if logged_in?
           - if defined?(answer) && answer == true
-            i.fa.fa-comment data-target="#modal-#{tweet.id}-answer" data-toggle="modal"
-            = render 'tweets/partials/reply_modal', tweet: tweet, answer: "-answer"
+              = link_to reply_tweet_path(tweet.id, :answer => "-answer"), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-#{tweet.id}-answer", class:"fa fa-comment"} do
+              span id="showmodal-#{tweet.id}-answer"
           - else
-            i.fa.fa-comment data-target="#modal-#{tweet.id}" data-toggle="modal"
-            = render 'tweets/partials/reply_modal', tweet: tweet, answer: ""
+              = link_to reply_tweet_path(tweet.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => "#modal-#{tweet.id}", class:"fa fa-comment"} do
+              span id="showmodal-#{tweet.id}"
         - else
-          i.fa.fa-comment
+          = link_to reply_tweet_path(tweet.id), class:"fa fa-comment" do
         span.count
           = tweet.children.size

@@ -26,7 +26,7 @@
           #nav-withanswers.tab-pane.fade[role="tabpanel" aria-labelledby="nav-withanswers-tab"]
             ul.list-group.border.border-bottom-0.border-top-0
               - @users_withanswers.each do |tweet|
-                li.list-group-tweet.border-bottom id="tweet_#{tweet.id}"
+                li.list-group-tweet.border-bottom id="tweet_#{tweet.id}-answer"
                   = link_to tweet, class:"overlay" do
                   .inner
                     = render 'tweets/partials/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: true, answer: true

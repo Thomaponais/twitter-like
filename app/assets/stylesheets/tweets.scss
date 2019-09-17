@@ -121,6 +121,10 @@ i.fa.fa-chevron-down {
   word-break: break-all;
 }
 
+.modal {
+  pointer-events: all;
+}
+
 [class*="like-of-"] {
   display: inline-block;
   width: 40px;

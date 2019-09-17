@@ -84,6 +84,15 @@ class TweetsController < ApplicationController
     end
   end
 
+  def reply
+    @tweet = Tweet.find(params[:id])
+    @answer = params[:answer]
+    respond_to do |format|
+      format.html { redirect_back fallback_location: root_path }
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tweet
@@ -96,10 +105,8 @@ class TweetsController < ApplicationController
     end
 
     def require_user_permission
-      if logged_in? && @tweet.user != current_user
+      if @tweet.user != current_user
         redirect_to root_path
-      elsif not logged_in?
-        redirect_to login_path, alert: "ログインしてください！"
       end
     end
 

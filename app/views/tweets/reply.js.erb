@@ -1,0 +1,5 @@
+$("#showmodal-<%= @tweet.id %><%= @answer %>").html("<%= j (render partial: 'tweets/partials/reply_modal', locals: { tweet: @tweet, answer: @answer }) %>");
+$("#modal-<%= @tweet.id %><%= @answer %>").modal();
+$("#modal-<%= @tweet.id %><%= @answer %>").on('hidden.bs.modal', function () {
+  $("#showmodal-<%= @tweet.id %><%= @answer %>").empty();
+})

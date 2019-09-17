@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to(root_path, notice: 'ログインができました')
+      redirect_to root_path, notice: 'ログインができました'
     else
       redirect_to :login, alert: "ログインができませんでした"
     end
@@ -17,6 +17,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(root_path, notice: 'ログアウトしました')
+    redirect_to root_path, notice: 'ログアウトしました'
   end
 end
