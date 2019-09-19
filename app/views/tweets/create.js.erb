@@ -1,0 +1,6 @@
+var list = "<li class='list-group-tweet border-bottom' id='tweet_<%= @tweet.id %>'></li>";
+$("#feed").prepend(list);
+$("#tweet_<%= @tweet.id %>").append("<a class='overlay' href='/tweets/<%= @tweet.id %>'></a>\
+                                      <div class='inner' id='inner_<%= @tweet.id %>'></div>");
+$("#inner_<%= @tweet.id %>").append("<%= j (render partial: 'tweets/partials/tweet', locals: { tweet: @tweet, currentTweet_vl: true, previousTweetLink: true }) %>");
+$("#tweet_tweet").val('');

@@ -1,10 +1,10 @@
 .col-12.col-sm-10.col-md-8.col-lg-6
-    ul.list-group.mt-2.border.border-bottom-0
+    ul.list-group.mt-2.border.border-bottom-0 id="feed"
       - tweets.each do |root|
         - root.self_and_descendants.each do |tweet|
           li.list-group-tweet id="tweet_#{tweet.id}" class=("border-bottom" if !tweet.children.exists?)
             = link_to tweet, class:"overlay" do
-            .inner
+            .inner id="inner_#{tweet.id}"
               = render 'tweets/partials/tweet', tweet: tweet, currentTweet_vl: true, previousTweetLink: true
     .pagination.justify-content-end
       = paginate tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm"

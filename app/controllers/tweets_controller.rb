@@ -34,6 +34,7 @@ class TweetsController < ApplicationController
       if @tweet.save
         format.html { redirect_back fallback_location: root_path, notice: 'ツーイトの投稿が完了しました。' }
         format.json { render :show, status: :created, location: @tweet }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
