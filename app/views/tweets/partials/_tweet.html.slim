@@ -8,7 +8,7 @@
         .col-12.mt-2
           - if tweet.children.exists?  && currentTweet_vl == true
             .vltweet
-    .col-11.pl-2.pb-1.pr-3.pr-lg-0
+    .col-11.pl-2.pb-1.pr-3.pr-xl-0.pr-lg-2.pr-md-2.pr-sm-2
       .tweet_chevron.pull-right
         - if logged_in? && current_user.id == tweet.user_id
           dropdown

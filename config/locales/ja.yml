@@ -1,4 +1,11 @@
 ja:
+  views:
+    pagination:
+      first: "最初"
+      last: "最後"
+      previous: "前"
+      next: "次"
+      truncate: "..."
   layouts:
     application:
       home: "ホームページ"
@@ -53,4 +60,3 @@ ja:
               too_short: ":６文字以上のパスワードを入力してください"
             password_confirmation:
               confirmation: ":パスワードとパスワードの確認は同じではありません"
-
