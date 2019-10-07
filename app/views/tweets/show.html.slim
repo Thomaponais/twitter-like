@@ -7,12 +7,12 @@
             li.list-group-tweet id="show_tweet_#{ancestor.id}" class=("border-bottom" if !ancestor.descendants.exists?)
               = link_to ancestor, class:"overlay" do
               .inner
-                = render 'tweets/partials/tweet', tweet: ancestor, currentTweet_vl: true, previousTweetLink: false
+                = render 'partials/tweets/tweet', tweet: ancestor, currentTweet_vl: true, previousTweetLink: false
         li.list-group-tweet.border-bottom.current id="show_tweet_#{@tweet.id}"
-          = render 'tweets/partials/tweet', tweet: @tweet, currentTweet_vl: false, previousTweetLink: false
+          = render 'partials/tweets/tweet', tweet: @tweet, currentTweet_vl: false, previousTweetLink: false
         - if @tweet.children.exists?
           - @tweet.descendants.each do |child|
             li.list-group-tweet id="show_tweet_#{child.id}" class=("border-bottom" if !child.children.exists?)
               = link_to child, class:"overlay" do
               .inner
-                = render 'tweets/partials/tweet', tweet: child, currentTweet_vl: true, previousTweetLink: false
+                = render 'partials/tweets/tweet', tweet: child, currentTweet_vl: true, previousTweetLink: false

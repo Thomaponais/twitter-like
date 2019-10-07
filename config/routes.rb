@@ -13,10 +13,11 @@ Rails.application.routes.draw do
     end
   end
   root to: 'tweets#index'
-  resources :user_sessions, only: [:new, :create, :destroy]
-  get 'user_index', to: "users#index", as: :user_index
   resources :users
-  get 'login', to: 'user_sessions#new', as: :login
+  get 'user_index', to: "users#index", as: :user_index
+  resources :user_sessions, only: [:new, :create, :destroy]
+  post 'login', to: 'user_sessions#create', as: :login
+  get 'login', to: 'user_sessions#new'
   delete 'logout', to: 'user_sessions#destroy', as: :logout
   if Rails.env.production?
     get '*path', to: redirect('/'), constraints: lambda { |req|

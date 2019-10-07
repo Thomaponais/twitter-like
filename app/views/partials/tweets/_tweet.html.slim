@@ -28,7 +28,7 @@
         .tweet= tweet.tweet
       .button-tweet
         span.mr-2 class="like-of-#{tweet.id}"
-          = render partial: 'tweets/partials/like', locals: { tweet: tweet }
+          = render partial: 'partials/tweets/like', locals: { tweet: tweet }
         - if logged_in?
           - if defined?(answer) && answer == true
               = link_to reply_tweet_path(tweet.id, answer: "-answer"), {remote: true, 'data-toggle': "modal", 'data-target': "#modal-#{tweet.id}-answer", class:"fa fa-comment"} do

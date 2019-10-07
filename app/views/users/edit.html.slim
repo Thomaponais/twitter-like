@@ -27,9 +27,9 @@
 
       #v-pills-tabContent.tab-content
         #v-pills-home.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="v-pills-home-tab"]
-          = render 'users/partials/editinfo', user: @user
+          = render 'partials/users/editinfo', user: @user
         #v-pills-profile.tab-pane.fade[role="tabpanel" aria-labelledby="v-pills-profile-tab"]
-          = render 'users/partials/editmail', user: @user
+          = render 'partials/users/editmail', user: @user
         #v-pills-messages.tab-pane.fade[role="tabpanel" aria-labelledby="v-pills-messages-tab"]
-          = render 'users/partials/editpassword', user: @user
+          = render 'partials/users/editpassword', user: @user
     .col-12.col-sm-10.col-md-8.col-lg-3

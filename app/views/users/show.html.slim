@@ -1,6 +1,6 @@
 .container-fluid
   .row.d-flex.justify-content-center.mb-2.no-gutters
-    = render 'users/partials/profil_info', user: @user
+    = render 'partials/users/profil_info', user: @user
     - if @user.tweets.empty?
       .col-12.col-sm-10.col-md-8.col-lg-6
         p.mt-2.text-center
@@ -20,7 +20,7 @@
                 li.list-group-tweet.border-bottom id="tweet_#{tweet.id}"
                   = link_to tweet, class:"overlay" do
                   .inner
-                    = render 'tweets/partials/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: false , answer: false
+                    = render 'partials/tweets/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: false , answer: false
               .pagination.justify-content-end
                 = paginate @users_tweets, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", param_name: "tweets_page"
           #nav-withanswers.tab-pane.fade[role="tabpanel" aria-labelledby="nav-withanswers-tab"]
@@ -29,7 +29,7 @@
                 li.list-group-tweet.border-bottom id="tweet_#{tweet.id}-answer"
                   = link_to tweet, class:"overlay" do
                   .inner
-                    = render 'tweets/partials/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: true, answer: true
+                    = render 'partials/tweets/tweet', tweet: tweet, currentTweet_vl: false, previousTweetLink: true, answer: true
               .pagination.justify-content-end
                 = paginate @users_withanswers, theme: 'twitter-bootstrap-4', pagination_class: "pagination-sm", param_name: "withanswers_page"
 

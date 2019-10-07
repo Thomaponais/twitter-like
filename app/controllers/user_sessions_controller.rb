@@ -11,7 +11,8 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to root_path, notice: 'ログインができました'
     else
-      redirect_to :login, alert: "ログインができませんでした"
+      flash.now[:alert] = "ログインができませんでした"
+      render :new
     end
   end
 
