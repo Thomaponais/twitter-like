@@ -57,7 +57,7 @@ group :development do
   gem 'validates_email_format_of'
   gem 'guard', '~> 2.15'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
-  gem 'image_processing', '~> 1.2'
+  gem 'image_processing', '~> 1.12'
   gem 'kaminari'
   gem 'acts_as_votable', '~> 0.12.1'
   gem 'acts_as_follower'
